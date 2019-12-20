@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:27:12 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 15:23:15 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/20 19:24:59 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	parse_precision(t_printf *pf)
 	temp = NULL;
 	if (pf->str[pf->i] == '.' && ft_isdigit(pf->str[pf->i + 1]))
 	{
+		if (pf->str[pf->i + 1] == '0')
+			pf->i++;
 		pf->i++;
 		temp = ft_strdup(pf->str + pf->i);
 		pf->precision = ft_atoi(temp);

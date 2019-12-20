@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 18:42:52 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 18:32:19 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/20 19:15:03 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static void	ft_width_s(t_printf *pf, char *str)
 {
 	if (pf->width > 0)
 	{
-		if (pf->precision > 0 && pf->precision > pf->width)
+		if (pf->precision > 0 && pf->precision > pf->width \
+				&& pf->precision < (int)ft_strlen(str))
 			pf->width = pf->width - pf->precision + (int)ft_strlen(str);
 		else if (pf->precision > 0 && pf->precision < pf->width \
 				&& pf->precision >= (int)ft_strlen(str))

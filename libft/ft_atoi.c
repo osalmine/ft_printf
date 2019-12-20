@@ -6,9 +6,10 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:38:27 by osalmine          #+#    #+#             */
-/*   Updated: 2019/10/28 17:16:52 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/20 19:24:32 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 int	ft_atoi(const char *str)
 {
