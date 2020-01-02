@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:12:23 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 17:42:51 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 14:21:15 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void			front_padding_nb(t_printf *pf, long long i, char *str)
 		len -= 1;
 	if (pf->width > 0 && pf->flag[0] == FALSE)
 	{
-		if (pf->flag[3] == TRUE && (pf->precision - len) <= 0)
+		if (pf->flag[3] == TRUE && (pf->precision - len) < 0 \
+			&& pf->precision != -3)
 		{
 			put_spacing(pf, i);
 			while (pf->width--)
@@ -71,12 +72,14 @@ static void			front_padding_nb(t_printf *pf, long long i, char *str)
 
 static int			nb_start(t_printf *pf, long long i, char *str)
 {
-	int			ignore;
+	int	ignore;
 
 	ignore = 0;
 	if (pf->width <= 0 || pf->flag[0] == TRUE)
 		put_spacing(pf, i);
-	if (i < 0 && ((pf->width <= 0 && pf->precision > 0) || pf->flag[3] == TRUE))
+	if (i < 0 && ((pf->width <= 0 && pf->precision > 0) ||
+		(pf->flag[3] == TRUE && pf->width <= 0) ||
+		(pf->flag[3] == TRUE && pf->precision == -1)))
 	{
 		pf->len += ft_len_putchar('-');
 		ignore = 1;
@@ -97,7 +100,7 @@ void				put_di(t_printf *pf)
 	int			ignore;
 
 	i = get_number(pf);
-	if ((pf->precision == -2 || pf->precision == 0) && i == 0)
+	if ((pf->precision == -2 || pf->precision == -3) && i == 0)
 		str = ft_strnew(0);
 	else
 		str = ft_itoa_base_ll(i, 10, 'a');

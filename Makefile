@@ -6,7 +6,7 @@
 #    By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/18 12:39:52 by osalmine          #+#    #+#              #
-#    Updated: 2019/12/20 16:58:41 by osalmine         ###   ########.fr        #
+#    Updated: 2020/01/02 15:37:29 by osalmine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT_DIR =	libft/
 FLAGS =		-Wall -Werror -Wextra
 INCLUDE =	ft_printf.h
 SOURCE =	ft_printf.c parse.c put_csp.c ft_len_put.c ft_itoa_base.c put_di.c \
-			put_prosent.c put_o.c put_u.c put_xX.c
+			put_prosent.c put_o.c put_u.c put_x.c put_empty.c put_f.c
 OBJ =		$(SOURCE:%.c=%.o)
 
 all: $(NAME)

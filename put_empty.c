@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   put_empty.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 17:04:46 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 15:42:24 by osalmine         ###   ########.fr       */
+/*   Created: 2020/01/02 12:21:19 by osalmine          #+#    #+#             */
+/*   Updated: 2020/01/02 12:28:51 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-int main(void)
+void	put_empty(t_printf *pf)
 {
-	float i = 3;
-
-	printf("test %f yeet\n", i);
-	return (0);
+	pf->width -= 1;
+	if (pf->width > 0 && pf->flag[0] == FALSE)
+	{
+		if (pf->flag[3] == TRUE)
+			while (pf->width--)
+				pf->len += ft_len_putchar('0');
+		else
+			while (pf->width--)
+				pf->len += ft_len_putchar(' ');
+	}
 }

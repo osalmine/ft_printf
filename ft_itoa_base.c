@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:57:53 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:07:57 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 12:37:21 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int				ft_nb_len_ll(long long nb, long long base)
 	int size;
 
 	size = 0;
+	if (nb == 0)
+		return (1);
 	while (nb)
 	{
 		nb /= base;

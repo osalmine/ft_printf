@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:33:29 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:07:15 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 14:38:22 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void		print_types(t_printf *pf)
 		put_s(pf);
 	if (pf->type == 'p')
 		put_p(pf);
-/*	if (pf->type == 'f')
-		put_f(pf);*/
+	if (pf->type == 'f')
+		put_f(pf);
 	if (pf->type == 'd' || pf->type == 'i')
 		put_di(pf);
 	if (pf->type == 'o')
@@ -33,6 +33,8 @@ void		print_types(t_printf *pf)
 		put_x(pf);
 	if (pf->type == '%')
 		put_pros(pf);
+	if (pf->type == 0)
+		put_empty(pf);
 }
 
 t_printf	*init_pf(char *str, t_printf *pf)
@@ -61,6 +63,8 @@ void		pf_start(t_printf *pf, char *str)
 		if (*str == '%')
 		{
 			++str;
+			if (*str == 0)
+				exit(0);
 			pf = init_pf(str, pf);
 			ft_parse(pf);
 			str += pf->i;

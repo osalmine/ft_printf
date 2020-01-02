@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 18:42:52 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 19:15:03 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 13:20:09 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		put_s(t_printf *pf)
 	str = va_arg(pf->lst, char*);
 	if (!str)
 		str = "(null)";
-	if (pf->precision == -2)
+	if (pf->precision == -2 || pf->precision == -3)
 		str = "";
 	ft_width_s(pf, str);
 	start_s(pf);

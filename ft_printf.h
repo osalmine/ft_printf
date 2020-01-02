@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:41:16 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:07:33 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 14:38:35 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int				ft_nb_len(unsigned long nb, unsigned long base);
 void			put_o(t_printf *pf);
 void			put_u(t_printf *pf);
 void			put_x(t_printf *pf);
+void			put_empty(t_printf *pf);
+void			put_f(t_printf *pf);
 
 #endif
