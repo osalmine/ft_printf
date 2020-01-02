@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 14:54:27 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 15:40:56 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 16:06:39 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 int		main(void)
 {
-	long double i = 123456789.123456789;
+	int i;
 
-	ft_printf("ok %.9Lf\n", i);
-	printf("ok %.9Lf\n", i);
+	ft_printf("%p\n", &i);
+	printf("%p\n", &i);
 
 //	ft_printf("$moulitest: %5.d %5.0d$\n", 0, 0);
 //	printf("$moulitest: %5.d %5.0d$\n", 0, 0);

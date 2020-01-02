@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 18:38:54 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 15:40:43 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 16:32:58 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,18 @@ static long double	get_number(t_printf *pf)
 	return (i);
 }
 
-static void			float_to_str(t_printf *pf, long double nb)
+static void			print_int(t_printf *pf, long double nb)
 {
-	pf = NULL;
+	char	*temp;
+
+	temp = ft_itoa_base_ll((long long)nb, 10, 'a');
+	pf->len += ft_len_putstr(temp, 0);
+	free (temp);
+}
+
+static void			print_double(t_printf *pf, long double nb)
+{
+	pf->len += ft_len_putchar('.');
 	nb = 0;
 }
 
@@ -38,8 +47,8 @@ void				put_f(t_printf *pf)
 	long double nb;
 
 	nb = get_number(pf);
-	printf("\n|nb: %.9Lf|\n", nb);
 	if (pf->precision <= 0)
 		pf->precision = 7;
-	float_to_str(pf, nb);
+	print_int(pf, nb);
+	print_double(pf, nb);
 }
