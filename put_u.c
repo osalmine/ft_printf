@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:44:42 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 16:58:53 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 11:07:01 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int			nb_start(t_printf *pf, long long i, char *str)
 	return (ignore);
 }
 
-void	put_u(t_printf *pf)
+void				put_u(t_printf *pf)
 {
 	long long	i;
 	char		*str;

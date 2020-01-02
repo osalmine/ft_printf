@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:33:29 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 16:58:24 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 11:07:15 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		print_types(t_printf *pf)
 	if (pf->type == 'u')
 		put_u(pf);
 	if (pf->type == 'x' || pf->type == 'X')
-		put_xX(pf);
+		put_x(pf);
 	if (pf->type == '%')
 		put_pros(pf);
 }
@@ -71,7 +71,7 @@ void		pf_start(t_printf *pf, char *str)
 	}
 }
 
-int			ft_printf(const char *restrict format, ...)
+int			ft_printf(const char *format, ...)
 {
 	t_printf	*pf;
 	char		*str;

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:57:53 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 18:13:57 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 11:07:57 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char		ft_calculate_char(int mod, char c)
 	return (return_char);
 }
 
-int		ft_nb_len(unsigned long nb, unsigned long base)
+int				ft_nb_len(unsigned long nb, unsigned long base)
 {
 	int size;
 

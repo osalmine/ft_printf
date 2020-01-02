@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:41:16 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 16:58:34 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 11:07:33 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct	s_printf
 	int			length[5];
 }				t_printf;
 
-int				ft_printf(const char *restrict format, ...);
+int				ft_printf(const char *format, ...);
 void			ft_parse(t_printf *pf);
 t_printf		*init_pf(char *str, t_printf *pf);
 void			parse_flags(t_printf *pf);
@@ -60,6 +60,6 @@ int				ft_nb_len_ll(long long nb, long long base);
 int				ft_nb_len(unsigned long nb, unsigned long base);
 void			put_o(t_printf *pf);
 void			put_u(t_printf *pf);
-void			put_xX(t_printf *pf);
+void			put_x(t_printf *pf);
 
 #endif

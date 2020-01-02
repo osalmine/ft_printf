@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 14:54:27 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 19:20:54 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 11:04:16 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(void)
 	long t = 4345678945876;
 	long m = -4345678945876;
 
-	ft_printf("$%.09s$\n", "hello");
-	printf("$%.09s$\n", "hello");
+	ft_printf("@moulitest: %.d ok %.0d\n", 42, 43);
+	printf("@moulitest: %.d ok %.0d\n", 42, 43);
 	return (0);
 }

@@ -6,20 +6,20 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:28:55 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 17:05:32 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/02 11:06:01 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_len_putchar(char c)
+int		ft_len_putchar(char c)
 {
 	ft_putchar(c);
 	return (1);
 }
 
-int	ft_len_putstr(char *str, int ignore)
+int		ft_len_putstr(char *str, int ignore)
 {
 	int len;
 	int i;
@@ -36,7 +36,7 @@ int	ft_len_putstr(char *str, int ignore)
 	return (len);
 }
 
-void				put_spacing(t_printf *pf, long long i)
+void	put_spacing(t_printf *pf, long long i)
 {
 	if (i >= 0)
 	{
