@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:41:16 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 16:32:26 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/05 12:07:49 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void			put_u(t_printf *pf);
 void			put_x(t_printf *pf);
 void			put_empty(t_printf *pf);
 void			put_f(t_printf *pf);
+char			*ft_ftoa(long double n, int precision);
+char			*ft_ftoa_float(float n, int precision);
 
 #endif

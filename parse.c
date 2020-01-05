@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:27:12 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 13:16:36 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/05 15:05:12 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	parse_flags(t_printf *pf)
 {

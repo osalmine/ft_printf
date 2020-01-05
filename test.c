@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:04:46 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 15:57:22 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/05 15:30:08 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main(void)
 {
-	float i = 42.42;
+	double i = 573.924;
 
-	printf("test %f yeet %lld\n", i, (long long)i);
+	printf("ok: %lf\n", 0.0894255);
 	return (0);
 }
