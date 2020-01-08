@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 18:38:54 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/05 17:54:34 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/07 11:19:10 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void				put_f(t_printf *pf)
 	char		*str;
 
 	nb = get_number(pf);
-	printf("TEST: 1.00 * 100 = %f\n", 1.00 * 100);
 	if (pf->precision == -1)
 		pf->precision = 6;
 	if (pf->precision == -2 || pf->precision == -3)

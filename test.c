@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:04:46 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/05 15:30:08 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/07 12:06:19 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 int main(void)
 {
-	double i = 573.924;
+	long double ld = 1.00000;
+	int i;
 
-	printf("ok: %lf\n", 0.0894255);
+	i = 3;
+	while (--i)
+	{
+		ld /= 10;
+		printf("%Lf / 10 = %Lf\n", ld, ld / 10);
+	}
+
 	return (0);
 }
