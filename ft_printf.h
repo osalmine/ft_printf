@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:41:16 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/05 12:07:49 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/09 13:04:22 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int				ft_len_putchar(char c);
 int				ft_len_putstr(char *str, int ignore);
 char			*ft_itoa_base(unsigned long num, unsigned long base, char up_l);
 char			*ft_itoa_base_ll(long long num, long long base, char up_lo);
+void			ft_itoa_base_st(long long num, long long base, char up_lo, char **s);
 void			put_c(t_printf *pf);
 void			put_s(t_printf *pf);
 void			put_p(t_printf *pf);

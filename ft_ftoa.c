@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 08:58:09 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/08 13:52:08 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/09 19:42:05 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ static long double	ft_fmod(long double nb, long double div)
 	sign = nb < 0 ? -1 : 1;
 	if (div == 0)
 		return (0);
-	ret = nb - (div * (int)(nb / div));
+	ret = nb - (div * (long long)(nb / div));
 	if (ret * sign < 0)
 		ret *= -1;
-	printf("ret: %.15Lf, ret 2: %.15Lf int ret: ", ret, ret + 0.00001);
+//	printf("ret: %.15Lf, ret 2: %.15Lf int ret: ", ret, ret + 0.00001);
 	ret += 0.00001;
-	printf("%d\n", (int)ret);
+//	printf("%d\n", (int)ret);
 	return (ret);
 }
 
 static long double	ft_round(long double ld, int precision)
 {
 	long double	round;
-	int			pr;
+	long long	pr;
 
 	pr = 10;
 	round = 1.000000000;
@@ -42,48 +42,53 @@ static long double	ft_round(long double ld, int precision)
 		round /= 10;
 		pr *= 10;
 	}
-	printf("round ld: %.15Lf, round: %.15Lf, pr: %d\n", ld, round, pr);
-	printf("ld * pr = %Lf, number at pr fmod (%d): %Lf\n", ld * pr, pr, ft_fmod((ld * pr), 10.0));
-	printf("ld * pr = %Lf, number at pr modu (%d): %lld\n", ld * pr, pr, (long long)((ld + 0.0001) * pr) % 10);
+//	printf("round ld: %.15Lf, round: %.15Lf, pr: %d\n", ld, round, pr);
+//	printf("(int) ld * pr = %lld, ld * pr = %Lf, number at pr fmod (%d): %lld\n", (long long)(ld * pr), ld * pr, pr, (long long)ft_fmod((ld * pr), 10.0));
+//	printf("(int) ld * pr = %lld, ld * pr = %Lf, number at pr modu (%d): %lld\n", (long long)(ld * pr), ld * pr, pr, (long long)((ld + 0.0001) * pr) % 10);
 //	printf("round: %Lf\n", round);
 //	printf("ld: %.8Lf\n", ld);
-	if ((int)(ft_fmod((ld * pr), 10.0)) >= 5 && (int)(ft_fmod((ld * pr), 10.0)) < 10)
-//	if ((long long)(ld * pr) % 10 >= 5 && (long long)(ld * pr) % 10 < 10)
+//	if ((int)(ft_fmod((ld * pr), 10.0)) >= 5 && (int)(ft_fmod((ld * pr), 10.0)) < 10)
+	if ((long long)(ld * pr) % 10 >= 5 && (long long)(ld * pr) % 10 < 10)
 	{
-		printf("round: %.15Lf\nld before round:\t%.15Lf\n", round, ld);
+//		printf("round: %.15Lf\nld before round:\t%.15Lf\n", round, ld);
 		ld += round;
-		printf("ld after round:\t%.15Lf\n", ld);
+//		printf("ld after round: \t%.15Lf\n", ld);
 	}
 	return (ld);
 }
 
 static void			ft_decimals(long double ld, int precision, char **s, int i)
 {
-	int			tmp;
-	int			pr;
+	long long	tmp;
+	int 		pr;
 
-//	printf("ld: %.15Lf\n", ld);
-	printf("precision %d: %.*Lf\n", precision, precision, ld);
+//	printf("\nld:\t%.15Lf\n", ld);
+//	printf("precision %d: %.*Lf\n", precision, precision, ld);
 //	ld = ft_round(ld, precision);
 	ld *= 10;
+	(*s)[i++] = '.';
 	pr = precision;
 	while (precision--)
 	{
-		printf("\nprecision: %d\n", precision);
+//		printf("\nprecision: %d\n", precision);
 //		if ((int)ld != 9 && (int)(ft_fmod((ld * 100), 10.0)) != 9)
 //			tmp = (int)(ld + 0.01);
 //		else
 //			tmp = (int)ld;
-		tmp = (((int)ld != 9 && (int)(ft_fmod((ld * 100), 10.0)) != 9)
-				? (int)(ld + 0.01) : (int)ld);
+		tmp = (((long long)ld != 9 && (long long)(ft_fmod((ld * 100), 10.0)) != 9)
+				? (long long)(ld + 0.01) : (long long)ld);
 //		tmp = (int)ld != 9 ? (int)(ld + 0.01) : (int)ld;
-		printf("(ld (%.*Lf) * 100) = %d %% 10 = %d\n", precision, ld, (int)(ld * 100), (int)(ft_fmod((ld * 100), 10.0)));
-		printf("int ld: %d, ld: %Lf, tmp: %d\n", (int)ld, ld, tmp);
+//		printf("(ld (%.*Lf) * 100) = %d %% 10 = %d\n", precision, ld, (int)(ld * 100), (int)(ft_fmod((ld * 100), 10.0)));
+//		printf("int ld: %d, ld: %Lf, tmp: %lld\n", (int)ld, ld, tmp);
 //		tmp = (int)ld;
 //		if ((int)ld != 9)
 //			printf("ld != 9, ld (%Lf) + 0.01: %d (%Lf)\n", ld, (int)(ld + 0.01), ld + 0.01);
 //		else
 //			printf("ld == 9\n");
+		if (precision == 0 && (int)ld != tmp)
+			tmp = (int)ld;
+//		if (pr >= 20 && precision == 0 && (long long)(ld * 10) % 10 >= 5)
+//			tmp++;
 		if ((int)tmp == 0)
 		{
 //			printf("Zero, precision is %d and tmp is %d\n", precision, (int)tmp);
@@ -113,9 +118,9 @@ static void			ft_decimals(long double ld, int precision, char **s, int i)
 		}
 		else
 		{*/
-			printf("Positive. ld (%Lf) - tmp (%d)) * 10 = ", ld, tmp);
+//			printf("Positive. ld (%Lf) - tmp (%d)) * 10 = ", ld, tmp);
 			ld = (ld - tmp) * 10;
-			printf("%Lf\n", ld);
+//			printf("%Lf\n", ld);
 //		}
 //		ld = (((int)(ld - tmp) >= 0) ? (ld - (tmp - 1)) * 10 : (ld - tmp) * 10);
 //		ld = (ld - tmp) * 10;
@@ -125,28 +130,32 @@ static void			ft_decimals(long double ld, int precision, char **s, int i)
 char				*ft_ftoa(long double n, int precision)
 {
 	char		*str;
+//	char		*tmp;
 	long double	ld;
-	int			i;
+	long long	i;
 	int			neg;
+//	char s[1];
 
-//	printf("n: %Lf\n", n);
 	neg = 1;
-	if (!(str = (char*)malloc(sizeof(char) *
-		(precision + ft_nbs((int)n + 1 + (n < 0 ? 1 : 0))))))
-		return (0);
 	if (n < 0 && (neg = -1) == -1)
 		n = -n;
-	printf("n before round:\t%.*Lf\n", precision + 1, n);
+//	printf("n before round:\t%.*Lf\n", precision + 1, n);
 	n = ft_round(n, precision);
-	printf("n after round:\t%.*Lf\n", precision + 1, n);
-	i = (int)n;
+//	printf("Malloced size sum: %lu\n", sizeof(char) *
+//		(precision + ft_nb_len_ll((long long)n + 1, 10)));
+	if (!(str = (char*)malloc(sizeof(char) *
+		(precision + 1 + ft_nb_len_ll((long long)n, 10)))))
+		return (0);
+	ft_strclr(str);
+//	printf("n after round:\t%.*Lf\n", precision + 1, n);
+	i = (long long)n;
 	ld = n - (long double)i;
-	str = ft_itoa_base_ll((long long)i, 10, 'a');
+	ft_itoa_base_st((long long)i, 10, 'a', &str);
+//	read(0, s, 1);
 	if (neg == -1)
 		str = ft_strjoin("-", str);
 //	printf("int str: %s\n", str);
 	i = (int)ft_strlen(str);
-	str[i++] = '.';
 //	printf("ld: %Lf\n", ld);
 	if (precision > 0)
 		ft_decimals(ld, precision, &str, i);
