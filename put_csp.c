@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 18:42:52 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 13:20:09 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 15:03:24 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void		put_c(t_printf *pf)
 			while (pf->width--)
 				pf->len += ft_len_putchar(' ');
 	}
-	if (c >= 0 && c <= 127)
-		pf->len += ft_len_putchar(c);
+	pf->len += ft_len_putchar(c);
 	if (pf->width > 0 && pf->flag[0] == TRUE)
 		while (pf->width--)
 			pf->len += ft_len_putchar(' ');

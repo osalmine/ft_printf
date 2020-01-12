@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:39:10 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:07:06 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 15:32:58 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void				put_o(t_printf *pf)
 	int			ignore;
 
 	i = get_number(pf);
-	if ((pf->precision == -2 || pf->precision == 0) && i == 0)
+	if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
 		str = ft_itoa_base(i, 8, 'a');

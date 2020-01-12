@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:12:23 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/09 19:42:27 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 15:53:22 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,10 @@ void				put_di(t_printf *pf)
 	int			ignore;
 
 	i = get_number(pf);
-	if ((pf->precision == -2 || pf->precision == -3) && i == 0)
+	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
+		(str = ft_strnew(0)) && pf->width != 0)
+		pf->len += ft_len_putchar(' ');
+	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
 		str = ft_itoa_base_ll(i, 10, 'a');

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_xX.c                                           :+:      :+:    :+:   */
+/*   put_x.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:56:51 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:07:11 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 15:53:16 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,14 @@ void				put_x(t_printf *pf)
 	int			ignore;
 
 	i = get_number(pf);
-	if ((pf->precision == -2 || pf->precision == 0) && i == 0)
+	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
+		(str = ft_strnew(0)) && pf->width != 0)
+		pf->len += ft_len_putchar(' ');
+	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else if (pf->type == 'x')
 		str = ft_itoa_base(i, 16, 'a');
-	else
+	else if (pf->type == 'X')
 		str = ft_itoa_base(i, 16, 'A');
 	ft_width_nb(pf, i);
 	ignore = nb_start(pf, i, str);

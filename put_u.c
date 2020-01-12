@@ -6,11 +6,12 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:44:42 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:07:01 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 15:23:01 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static long long	get_number(t_printf *pf)
 {
@@ -96,7 +97,7 @@ void				put_u(t_printf *pf)
 	int			ignore;
 
 	i = get_number(pf);
-	if ((pf->precision == -2 || pf->precision == 0) && i == 0)
+	if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
 		str = ft_itoa_base(i, 10, 'a');
