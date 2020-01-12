@@ -6,11 +6,12 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:39:10 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/12 15:32:58 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:40:53 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static long long	get_number(t_printf *pf)
 {
@@ -91,9 +92,9 @@ static int			nb_start(t_printf *pf, long long i, char *str)
 
 void				put_o(t_printf *pf)
 {
-	long long	i;
-	char		*str;
-	int			ignore;
+	unsigned long long	i;
+	char				*str;
+	int					ignore;
 
 	i = get_number(pf);
 	if ((pf->precision <= -2 || pf->precision == 0) && i == 0)

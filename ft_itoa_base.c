@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:57:53 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/09 19:18:30 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:40:50 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,24 +89,13 @@ char			*ft_itoa_base(unsigned long num, unsigned long base, char up_lo)
 
 void			ft_itoa_base_st(long long num, long long base, char up_lo, char **s)
 {
-//	char	*str;
 	int		size;
 	int		minus;
-//	char s[1];
 
-//	if (num == 0)
-//	{
-//		if (!(str = ft_strnew(1)))
-//			return (NULL);
-//		*str = '0';
-//		return (str);
-//	}
 	minus = 0;
 	if (num < 0 && base == 10)
 		minus = 1;
 	size = ft_nb_len_ll(num, base) + minus;
-//	if (!(str = ft_strnew(size + 1)))
-//		return (NULL);
 	if (minus)
 		(*s)[0] = '-';
 	while (size > minus)
@@ -114,8 +103,6 @@ void			ft_itoa_base_st(long long num, long long base, char up_lo, char **s)
 		(*s)[(size--) - 1] = ft_calculate_char(ft_abs(num % base), up_lo);
 		num /= base;
 	}
-//	read(0, s, 1);
-//	return (str);
 }
 
 char			*ft_itoa_base_ll(long long num, long long base, char up_lo)

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:12:23 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/12 15:53:22 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 17:43:26 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void			ft_width_nb(t_printf *pf, long long i)
 	if ((pf->precision - ft_nb_len_ll(i, 10)) > 0)
 		pf->width -= (pf->precision - ft_nb_len_ll(i, 10));
 	if (i < 0 && pf->flag[0] == FALSE && (pf->flag[2] == TRUE || pf->flag[1]))
+		pf->width += 1;
+	if (i < 0 && pf->flag[0] == TRUE && pf->flag[1] == TRUE)
 		pf->width += 1;
 }
 
