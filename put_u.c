@@ -6,16 +6,16 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:44:42 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/12 15:23:01 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:05:47 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static long long	get_number(t_printf *pf)
+static size_t	get_number(t_printf *pf)
 {
-	long long	i;
+	size_t	i;
 
 	if (pf->length[0] == TRUE)
 		i = (unsigned short)va_arg(pf->lst, int);
@@ -27,11 +27,11 @@ static long long	get_number(t_printf *pf)
 		i = (unsigned long long)va_arg(pf->lst, unsigned long long int);
 	else
 		i = (unsigned int)va_arg(pf->lst, int);
-	i = (long long)i;
+	i = (size_t)i;
 	return (i);
 }
 
-static void			ft_width_nb(t_printf *pf, long long i)
+static void		ft_width_nb(t_printf *pf, long long i)
 {
 	if (i >= 0)
 		pf->width -= ft_nb_len(i, 10);
@@ -43,9 +43,13 @@ static void			ft_width_nb(t_printf *pf, long long i)
 		pf->width -= (pf->precision - ft_nb_len(i, 10));
 	if (i < 0 && pf->flag[0] == FALSE && (pf->flag[2] == TRUE || pf->flag[1]))
 		pf->width += 1;
+	if (i < 0 && pf->flag[0] == TRUE && pf->flag[1] == TRUE)
+		pf->width += 1;
+	if (i < 0 && pf->flag[2] == TRUE && pf->flag[0] == TRUE)
+		pf->width += 1;
 }
 
-static void			front_padding_nb(t_printf *pf, long long i, char *str)
+static void		front_padding_nb(t_printf *pf, long long i, char *str)
 {
 	int len;
 
@@ -54,7 +58,9 @@ static void			front_padding_nb(t_printf *pf, long long i, char *str)
 		len -= 1;
 	if (pf->width > 0 && pf->flag[0] == FALSE)
 	{
-		if (pf->flag[3] == TRUE && (pf->precision - len) <= 0)
+		if (pf->flag[3] == TRUE && (pf->precision - len) < 0 \
+			&& pf->precision != -3 \
+			&& (pf->precision > pf->width || pf->precision <= -1))
 		{
 			put_spacing(pf, i);
 			while (pf->width--)
@@ -69,7 +75,7 @@ static void			front_padding_nb(t_printf *pf, long long i, char *str)
 	}
 }
 
-static int			nb_start(t_printf *pf, long long i, char *str)
+static int		nb_start(t_printf *pf, long long i, char *str)
 {
 	int			ignore;
 
@@ -92,12 +98,15 @@ static int			nb_start(t_printf *pf, long long i, char *str)
 
 void				put_u(t_printf *pf)
 {
-	long long	i;
+	size_t	i;
 	char		*str;
 	int			ignore;
 
 	i = get_number(pf);
-	if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
+	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
+		(str = ft_strnew(0)) && pf->width != 0)
+		pf->len += ft_len_putchar(' ');
+	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
 		str = ft_itoa_base(i, 10, 'a');

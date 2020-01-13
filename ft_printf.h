@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:41:16 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/09 13:04:22 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:50:02 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			parse_precision(t_printf *pf);
 void			print_types(t_printf *pf);
 int				ft_len_putchar(char c);
 int				ft_len_putstr(char *str, int ignore);
-char			*ft_itoa_base(unsigned long num, unsigned long base, char up_l);
+char			*ft_itoa_base(size_t num, size_t base, char up_l);
 char			*ft_itoa_base_ll(long long num, long long base, char up_lo);
 void			ft_itoa_base_st(long long num, long long base, char up_lo, char **s);
 void			put_c(t_printf *pf);
@@ -58,7 +58,7 @@ void			put_di(t_printf *pf);
 void			put_spacing(t_printf *pf, long long i);
 void			put_pros(t_printf *pf);
 int				ft_nb_len_ll(long long nb, long long base);
-int				ft_nb_len(unsigned long nb, unsigned long base);
+int				ft_nb_len(size_t nb, size_t base);
 void			put_o(t_printf *pf);
 void			put_u(t_printf *pf);
 void			put_x(t_printf *pf);

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 18:42:52 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/12 15:03:24 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:54:42 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ void		put_s(t_printf *pf)
 
 void		put_p(t_printf *pf)
 {
-	unsigned long	p;
+	size_t	p;
 	char			*str;
 
-	p = (unsigned long)va_arg(pf->lst, unsigned long);
+	p = (size_t)va_arg(pf->lst, unsigned long);
 	str = ft_itoa_base(p, 16, 'a');
 	pf->width -= ft_strlen(str) + 2;
 	if (pf->width > 0 && pf->flag[0] == FALSE)
 		while (pf->width--)
 			pf->len += ft_len_putchar(' ');
-	ft_len_putstr("0x", 0);
-	ft_len_putstr(str, 0);
+	pf->len += ft_len_putstr("0x", 0);
+	pf->len += ft_len_putstr(str, 0);
 	if (pf->width > 0 && pf->flag[0] == TRUE)
 		while (pf->width--)
 			pf->len += ft_len_putchar(' ');
