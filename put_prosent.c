@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 10:43:22 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/20 10:51:17 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:02:20 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	put_pros(t_printf *pf)
 {
-	char c;
-
-	c = va_arg(pf->lst, unsigned long);
 	pf->width -= 1;
 	if (pf->width > 0 && pf->flag[0] == FALSE)
 	{

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:39:10 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/13 18:10:46 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 14:53:49 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static size_t	get_number(t_printf *pf)
 	else if (pf->length[3] == TRUE)
 		i = (unsigned long long)va_arg(pf->lst, unsigned long long int);
 	else
-		i = (int)va_arg(pf->lst, int);
+		i = (unsigned int)va_arg(pf->lst, unsigned int);
 	i = (size_t)i;
 	return (i);
 }
@@ -38,15 +38,13 @@ static void		ft_width_nb(t_printf *pf, long long i)
 	else
 		pf->width -= ft_nb_len(i, 8) + 1;
 	if (pf->flag[1] || pf->flag[2] ||
-		(pf->flag[4] && ft_nb_len(i, 8) > pf->precision && i != 0))
+		(pf->flag[4] && ft_nb_len(i, 8) >= pf->precision && i != 0))
 		pf->width -= 1;
 	if ((pf->precision - ft_nb_len(i, 8)) > 0)
 		pf->width -= (pf->precision - ft_nb_len(i, 8));
-	if (i < 0 && pf->flag[0] == FALSE && (pf->flag[2] == TRUE || pf->flag[1]))
-		pf->width += 1;
-	if (i < 0 && pf->flag[0] == TRUE && pf->flag[1] == TRUE)
-		pf->width += 1;
-	if (i < 0 && pf->flag[2] == TRUE && pf->flag[0] == TRUE)
+	if (i == 0 && pf->precision <= -2 && pf->flag[4] == TRUE && !pf->flag[0])
+		pf->width -= 1;
+	if (i == 0 && pf->precision <= -2 && pf->flag[0] == TRUE && !pf->flag[4])
 		pf->width += 1;
 }
 
@@ -83,17 +81,10 @@ static int		nb_start(t_printf *pf, long long i, char *str)
 	ignore = 0;
 	if (pf->width <= 0 || pf->flag[0] == TRUE)
 		put_spacing(pf, i);
-	if (i < 0 && ((pf->width <= 0 && pf->precision > 0) || pf->flag[3] == TRUE))
-	{
-		pf->len += ft_len_putchar('-');
-		ignore = 1;
-	}
+	if (pf->flag[4] == TRUE && pf->flag[3] == TRUE \
+		&& (int)ft_strlen(str) > pf->precision && pf->precision > 0)
+	pf->flag[3] = FALSE;
 	front_padding_nb(pf, i, str);
-	if (i < 0 && pf->precision > 0 && !ignore)
-	{
-		pf->len += ft_len_putchar('-');
-		ignore = 1;
-	}
 	return (ignore);
 }
 
@@ -105,7 +96,7 @@ void			put_o(t_printf *pf)
 
 	i = get_number(pf);
 	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
-		(str = ft_strnew(0)) && pf->width != 0)
+		(str = ft_strnew(0)) && pf->width != 0 && pf->flag[0] == FALSE)
 		pf->len += ft_len_putchar(' ');
 	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);

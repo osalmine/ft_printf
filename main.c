@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 14:54:27 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/13 18:12:15 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:28:29 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 
 int		main(void)
 {
-	ft_printf("%#08.5o$\n", 8375);
-	printf("%#08.5o$\n", 8375);
-
-//	ft_printf("%.5o$\n", 5263);
-//	printf("%.5o$\n", 5263);
-
-//	ft_printf("%#3o$\n", 0);
-//	printf("%#3o$\n", 0);
+	ft_printf("%4.16s$\n", "42 is the answer");
+	printf("%4.16s$\n", "42 is the answer");
 
 /*	ft_printf("$%05i$\n", 42);
 	printf("$%05i$\n", 42);
