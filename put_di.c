@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:12:23 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/13 13:28:45 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 19:02:47 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static void			ft_width_nb(t_printf *pf, long long i)
 		pf->width += 1;
 	if (i < 0 && pf->flag[0] == TRUE && pf->flag[1] == TRUE)
 		pf->width += 1;
-	if (i < 0 && pf->flag[2] == TRUE && pf->flag[0] == TRUE)
+	if (i < 0 && pf->flag[2] == TRUE && pf->flag[0] == TRUE && !pf->flag[1])
+		pf->width += 1;
+	if (i == 0 && pf->precision <= -2 && pf->flag[0] == TRUE)
 		pf->width += 1;
 }
 
@@ -106,7 +108,7 @@ void				put_di(t_printf *pf)
 
 	i = get_number(pf);
 	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
-		(str = ft_strnew(0)) && pf->width != 0)
+		(str = ft_strnew(0)) && pf->width != 0 && pf->flag[0] == FALSE)
 		pf->len += ft_len_putchar(' ');
 	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);

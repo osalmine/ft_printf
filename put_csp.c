@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 18:42:52 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/13 14:54:42 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:49:59 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ void		put_c(t_printf *pf)
 
 static void	ft_width_s(t_printf *pf, char *str)
 {
+	int len;
+
+	len = (int)ft_strlen(str) - ((int)ft_strlen(str) - pf->precision);
 	if (pf->width > 0)
 	{
 		if (pf->precision > 0 && pf->precision > pf->width \
-				&& pf->precision < (int)ft_strlen(str))
+				&& pf->precision < len)
 			pf->width = pf->width - pf->precision + (int)ft_strlen(str);
 		else if (pf->precision > 0 && pf->precision < pf->width \
 				&& pf->precision >= (int)ft_strlen(str))
@@ -72,7 +75,7 @@ void		put_s(t_printf *pf)
 	str = va_arg(pf->lst, char*);
 	if (!str)
 		str = "(null)";
-	if (pf->precision == -2 || pf->precision == -3)
+	if (pf->precision <= -2)
 		str = "";
 	ft_width_s(pf, str);
 	start_s(pf);
