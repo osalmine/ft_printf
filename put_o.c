@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:39:10 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/16 14:53:49 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/18 13:32:02 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int		nb_start(t_printf *pf, long long i, char *str)
 		put_spacing(pf, i);
 	if (pf->flag[4] == TRUE && pf->flag[3] == TRUE \
 		&& (int)ft_strlen(str) > pf->precision && pf->precision > 0)
-	pf->flag[3] = FALSE;
+		pf->flag[3] = FALSE;
 	front_padding_nb(pf, i, str);
 	return (ignore);
 }

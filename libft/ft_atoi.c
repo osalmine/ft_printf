@@ -6,15 +6,15 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:38:27 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/02 11:11:46 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:14:15 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int i;
-	int neg;
-	int nb;
+	int 		i;
+	int 		neg;
+	long long	nb;
 
 	i = 0;
 	nb = 0;

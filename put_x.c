@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:56:51 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/16 19:05:40 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/18 13:44:51 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void			ft_width_nb(t_printf *pf, long long i)
 		pf->width -= ft_nb_len_ll(i, 16) + 1;
 	if (pf->flag[1] || pf->flag[2])
 		pf->width -= 1;
-	if (pf->flag[4])
+	if (pf->flag[4] && i != 0)
 		pf->width -= 2;
 	if ((pf->precision - ft_nb_len_ll(i, 16)) > 0)
 		pf->width -= (pf->precision - ft_nb_len_ll(i, 16));
@@ -56,7 +56,9 @@ static void			front_padding_nb(t_printf *pf, long long i, char *str)
 		len -= 1;
 	if (pf->width > 0 && pf->flag[0] == FALSE)
 	{
-		if (pf->flag[3] == TRUE && (pf->precision - len) <= 0)
+		if (pf->flag[3] == TRUE && (pf->precision - len) < 0 \
+			&& pf->precision != -3 \
+			&& (pf->precision > pf->width || pf->precision <= -1))
 		{
 			put_spacing(pf, i);
 			while (pf->width--)
@@ -78,17 +80,10 @@ static int			nb_start(t_printf *pf, long long i, char *str)
 	ignore = 0;
 	if (pf->width <= 0 || pf->flag[0] == TRUE)
 		put_spacing(pf, i);
-	if (i < 0 && ((pf->width <= 0 && pf->precision > 0) || pf->flag[3] == TRUE))
-	{
-		pf->len += ft_len_putchar('-');
-		ignore = 1;
-	}
+	if (pf->flag[4] == TRUE && pf->flag[3] == TRUE \
+		&& (int)ft_strlen(str) > pf->precision && pf->precision > 0)
+		pf->flag[3] = FALSE;
 	front_padding_nb(pf, i, str);
-	if (i < 0 && pf->precision > 0 && !ignore)
-	{
-		pf->len += ft_len_putchar('-');
-		ignore = 1;
-	}
 	return (ignore);
 }
 
@@ -108,9 +103,11 @@ void				put_x(t_printf *pf)
 		str = ft_itoa_base(i, 16, 'a');
 	else if (pf->type == 'X')
 		str = ft_itoa_base(i, 16, 'A');
+//	printf("width bef: %d\n", pf->width);
 	ft_width_nb(pf, i);
+//	printf("width aft: %d\n", pf->width);
 	ignore = nb_start(pf, i, str);
-	if ((pf->precision -= (i < 0 ? ft_nbs(-i) : ft_nbs(i))) >= 0)
+	if ((pf->precision -= (i < 0 ? ft_nb_len(-i, 16) : ft_nb_len(i, 16))) >= 0)
 		while (pf->precision--)
 			pf->len += ft_len_putchar('0');
 	pf->len += ft_len_putstr(str, ignore);

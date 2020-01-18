@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 18:38:54 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/09 19:44:29 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:04:31 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static void			ft_width_nb(t_printf *pf, char *str)
 		pf->width -= 1;
 	if ((pf->precision - (int)ft_strlen(str)) > 0)
 		pf->width -= (pf->precision - (int)ft_strlen(str));
-	if (ft_atoi(str) < 0 && pf->flag[0] == FALSE && (pf->flag[2] == TRUE || pf->flag[1]))
+	if (ft_atoi(str) < 0 && pf->flag[0] == FALSE && (pf->flag[2] == TRUE \
+		|| pf->flag[1]))
 		pf->width += 1;
 }
 
@@ -96,6 +97,7 @@ void				put_f(t_printf *pf)
 
 	nb = get_number(pf);
 //	printf("\nnb: %.15Lf\n", nb);
+//	printf("pr: %d\n", pf->precision);
 	if (pf->precision == -1)
 		pf->precision = 6;
 	if (pf->precision == -2 || pf->precision == -3)
@@ -105,6 +107,8 @@ void				put_f(t_printf *pf)
 	ft_width_nb(pf, str);
 //	printf("pf->w: %d\n", pf->width);
 	ignore = nb_start(pf, nb, str);
+	if (pf->precision == 0 && (int)nb < 0)
+		pf->len += ft_len_putchar('-');
 	pf->len += ft_len_putstr(str, ignore);
 	if (pf->precision == 0 && pf->flag[4] == TRUE)
 		pf->len += ft_len_putchar('.');

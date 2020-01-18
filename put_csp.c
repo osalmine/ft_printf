@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 18:42:52 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/16 18:49:59 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/18 13:07:45 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,15 @@ void		put_p(t_printf *pf)
 		while (pf->width--)
 			pf->len += ft_len_putchar(' ');
 	pf->len += ft_len_putstr("0x", 0);
-	pf->len += ft_len_putstr(str, 0);
+	if (pf->precision > 0 && pf->precision - (int)ft_strlen(str) > -2)
+		pf->precision -= ft_strlen(str);
+	else if (pf->precision > 0 && pf->precision - (int)ft_strlen(str) <= -2)
+		pf->precision = -1;
+	if (pf->precision > 0)
+		while (pf->precision--)
+			pf->len += ft_len_putchar('0');
+	if (pf->precision > -2)
+		pf->len += ft_len_putstr(str, 0);
 	if (pf->width > 0 && pf->flag[0] == TRUE)
 		while (pf->width--)
 			pf->len += ft_len_putchar(' ');

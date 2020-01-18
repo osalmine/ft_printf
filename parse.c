@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 13:27:12 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/12 18:14:38 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:08:03 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ void	parse_width(t_printf *pf)
 	char *temp;
 
 	temp = NULL;
-	if (pf->str[pf->i] >= '0' && pf->str[pf->i] <= '9')
+	if (ft_isdigit(pf->str[pf->i]))
 	{
 		temp = ft_strdup(pf->str + pf->i);
 		pf->width = ft_atoi(temp);
 		pf->i += ft_nbs(pf->width);
+		if (!pf->str[pf->i])
+			pf->width = -5;
 		free(temp);
 	}
 }
@@ -107,6 +109,8 @@ void	ft_parse(t_printf *pf)
 {
 	parse_flags(pf);
 	parse_width(pf);
+	if (pf->width == -5 && pf->i++)
+		return ;
 	parse_precision(pf);
 	parse_length(pf);
 	if (ft_strchr("cspfdiouxX%", pf->str[pf->i]) != NULL)
