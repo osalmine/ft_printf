@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:33:29 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/18 20:08:23 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:25:30 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void		pf_start(t_printf *pf, char *str)
 				break ;
 			pf = init_pf(str, pf);
 			ft_parse(pf);
+			if (!*(str + pf->i))
+				break ;
 			str += pf->i;
 		}
 		else

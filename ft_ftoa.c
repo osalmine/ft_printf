@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 08:58:09 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/18 20:04:39 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:34:49 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ char				*ft_ftoa(long double n, int precision)
 	i = (long long)n;
 	ld = n - (long double)i;
 //	printf("str bef itoa: %s\n", str);
-	ft_itoa_base_st(i, 10, 'a', &str);
+	ft_itoa_base_s(i, 10, 'a', &str);
 //	printf("str aft itoa: %s\n", str);
 //	read(0, s, 1);
 //	printf("int str: %s\n", str);
@@ -143,5 +143,7 @@ char				*ft_ftoa(long double n, int precision)
 //	printf("ld: %Lf\n", ld);
 	if (precision > 0)
 		ft_decimals(ld, precision, &str, i);
+	if (neg == 1)
+		str = ft_strjoin("-", str);
 	return (str);
 }

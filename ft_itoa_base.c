@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:57:53 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/16 14:54:06 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:43:53 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static int		ft_abs(int n)
 {
@@ -89,7 +88,7 @@ char			*ft_itoa_base(size_t num, size_t base, char up_lo)
 	return (str);
 }
 
-void			ft_itoa_base_st(long long num, long long base, char up_lo, char **s)
+void			ft_itoa_base_s(long long num, long long base, char u, char **s)
 {
 	int		size;
 	int		minus;
@@ -102,7 +101,7 @@ void			ft_itoa_base_st(long long num, long long base, char up_lo, char **s)
 		(*s)[0] = '-';
 	while (size > minus)
 	{
-		(*s)[(size--) - 1] = ft_calculate_char(ft_abs(num % base), up_lo);
+		(*s)[(size--) - 1] = ft_calculate_char(ft_abs(num % base), u);
 		num /= base;
 	}
 }

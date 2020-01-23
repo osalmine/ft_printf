@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:28:55 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/13 16:03:06 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:39:27 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		ft_len_putchar(char c)
 {

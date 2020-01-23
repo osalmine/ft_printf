@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:12:23 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/16 19:02:47 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:37:59 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static long long	get_number(t_printf *pf)
 {

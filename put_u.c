@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:44:42 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/13 15:05:47 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:38:35 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static size_t	get_number(t_printf *pf)
 {

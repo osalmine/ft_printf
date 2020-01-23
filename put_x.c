@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:56:51 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/18 13:44:51 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:38:31 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static long long	get_number(t_printf *pf)
 {
@@ -103,9 +102,7 @@ void				put_x(t_printf *pf)
 		str = ft_itoa_base(i, 16, 'a');
 	else if (pf->type == 'X')
 		str = ft_itoa_base(i, 16, 'A');
-//	printf("width bef: %d\n", pf->width);
 	ft_width_nb(pf, i);
-//	printf("width aft: %d\n", pf->width);
 	ignore = nb_start(pf, i, str);
 	if ((pf->precision -= (i < 0 ? ft_nb_len(-i, 16) : ft_nb_len(i, 16))) >= 0)
 		while (pf->precision--)
