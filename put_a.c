@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 12:44:53 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 13:18:22 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:25:24 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ static void	put_str(t_printf *pf, char *str)
 		while (pf->width--)
 			pf->len += ft_len_putchar(' ', pf->fd);
 }
+
+/*
+**	Prints a NULL-terminated 2d char array. Use the l specifier to put spaces
+**	instead of new lines between the strings. Precision and all other flags
+**	are applied to every string.
+*/
 
 void		put_a(t_printf *pf)
 {
