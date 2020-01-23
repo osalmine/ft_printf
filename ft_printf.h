@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:41:16 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 10:43:49 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:36:04 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 /*
 **	flag  0-4 are 0: minus, 1: plus, 2: space, 3: zero and 4: hash
-**	length 0-4 are 0: h, 1: hh, 2: l, 3: ll, 4: L
+**	length 0-4 are 0: h, 1: hh, 2: l, 3: ll, 4: L, 5: z
 */
 
 typedef struct	s_printf
@@ -36,18 +36,20 @@ typedef struct	s_printf
 	int			flag[5];
 	int			precision;
 	int			width;
-	int			length[5];
+	int			length[6];
+	int			fd;
 }				t_printf;
 
 int				ft_printf(const char *format, ...);
+int				ft_fprintf(int fd, const char *format, ...);
 void			ft_parse(t_printf *pf);
 t_printf		*init_pf(char *str, t_printf *pf);
 void			parse_flags(t_printf *pf);
 void			parse_width(t_printf *pf);
 void			parse_precision(t_printf *pf);
 void			print_types(t_printf *pf);
-int				ft_len_putchar(char c);
-int				ft_len_putstr(char *str, int ignore);
+int				ft_len_putchar(char c, int fd);
+int				ft_len_putstr(char *str, int ignore, int fd);
 char			*ft_itoa_base(size_t num, size_t base, char up_l);
 char			*ft_itoa_base_ll(long long num, long long base, char up_lo);
 void			ft_itoa_base_s(long long num, long long base, char u, char **s);
@@ -66,5 +68,7 @@ void			put_empty(t_printf *pf);
 void			put_f(t_printf *pf);
 char			*ft_ftoa(long double n, int precision);
 char			*ft_ftoa_float(float n, int precision);
+void			put_b(t_printf *pf);
+void			put_a(t_printf *pf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:39:10 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 10:39:04 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:39:16 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static size_t	get_number(t_printf *pf)
 		i = (unsigned long)va_arg(pf->lst, unsigned long int);
 	else if (pf->length[3] == TRUE)
 		i = (unsigned long long)va_arg(pf->lst, unsigned long long int);
+	else if (pf->length[5] == TRUE)
+		i = (size_t)va_arg(pf->lst, size_t);
 	else
 		i = (unsigned int)va_arg(pf->lst, unsigned int);
 	i = (size_t)i;
@@ -62,12 +64,12 @@ static void		front_padding_nb(t_printf *pf, long long i, char *str)
 		{
 			put_spacing(pf, i);
 			while (pf->width--)
-				pf->len += ft_len_putchar('0');
+				pf->len += ft_len_putchar('0', pf->fd);
 		}
 		else
 		{
 			while (pf->width--)
-				pf->len += ft_len_putchar(' ');
+				pf->len += ft_len_putchar(' ', pf->fd);
 			put_spacing(pf, i);
 		}
 	}
@@ -96,7 +98,7 @@ void			put_o(t_printf *pf)
 	i = get_number(pf);
 	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
 		(str = ft_strnew(0)) && pf->width != 0 && pf->flag[0] == FALSE)
-		pf->len += ft_len_putchar(' ');
+		pf->len += ft_len_putchar(' ', pf->fd);
 	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
@@ -105,10 +107,10 @@ void			put_o(t_printf *pf)
 	ignore = nb_start(pf, i, str);
 	if ((pf->precision -= (i < 0 ? ft_nb_len(-i, 8) : ft_nb_len(i, 8))) >= 0)
 		while (pf->precision--)
-			pf->len += ft_len_putchar('0');
-	pf->len += ft_len_putstr(str, ignore);
+			pf->len += ft_len_putchar('0', pf->fd);
+	pf->len += ft_len_putstr(str, ignore, pf->fd);
 	if (pf->width > 0 && pf->flag[0] == TRUE)
 		while (pf->width--)
-			pf->len += ft_len_putchar(' ');
+			pf->len += ft_len_putchar(' ', pf->fd);
 	free(str);
 }

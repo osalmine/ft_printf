@@ -6,24 +6,41 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 14:54:27 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 11:30:43 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:20:58 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
+#include <fcntl.h>
 
 int		main(void)
 {
-	ft_printf("%.20f$\n", 1.025978542436587568678);
-	printf("%.20f$\n", 1.025978542436587568678);
+	char **arr;
+	int fd;
 
-/*	ft_printf("% -5.0f$\n", -7.3);
-	printf("% -5.0f$\n", -7.3);
+	arr = ft_strsplit("Nyt onnn testissa", ' ');
+	fd = open("_FD_TEST", O_WRONLY);
+
+//	ft_fprintf(fd, "%s$\n", "yeet");
+
+	size_t i = 3456786576578698;
+
+//	ft_printf("%zx$\n", i);
+//	printf("%zx$\n", i);
+
+	ft_printf("%*d$\n", -5, 42);
+	printf("%*d$\n", -5, 42);
+
+/*	ft_printf("%.25f$\n", 1.025978542436587568678);
+	printf("%.25f$\n\n", 1.025978542436587568678);
+
+	ft_printf("% -5.0f$\n", -7.3);
+	printf("% -5.0f$\n\n", -7.3);
 
 	ft_printf("%+-5.0f$\n", -7.3);
-	printf("%+-5.0f$\n", -7.3);
+	printf("%+-5.0f$\n\n", -7.3);
 
 	ft_printf("%05.0f$\n", -7.3);
 	printf("%05.0f$\n\n", -7.3);
@@ -49,8 +66,9 @@ int		main(void)
 	ft_printf("%f\n", -0.000001);
 	printf("%f\n\n", -0.000001);
 
-	ft_printf("%.17f\n", 42.123449999999998);
-	printf("%.17f\n\n", 42.123449999999998);
+
+	ft_printf("%.17f\n", 42.123449999999999);
+	printf("%.17f\n\n", 42.123449999999999);
 
 	ft_printf("%f\n", 43.4399999);
 	printf("%f\n\n", 43.4399999);

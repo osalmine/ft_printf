@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 13:12:23 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 10:37:59 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:38:51 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static long long	get_number(t_printf *pf)
 		i = (long)va_arg(pf->lst, long int);
 	else if (pf->length[3] == TRUE)
 		i = (long long int)va_arg(pf->lst, long long int);
+	else if (pf->length[5] == TRUE)
+		i = (size_t)va_arg(pf->lst, size_t);
 	else
 		i = (int)va_arg(pf->lst, int);
 	i = (long long)i;
@@ -65,12 +67,12 @@ static void			front_padding_nb(t_printf *pf, long long i, char *str)
 		{
 			put_spacing(pf, i);
 			while (pf->width--)
-				pf->len += ft_len_putchar('0');
+				pf->len += ft_len_putchar('0', pf->fd);
 		}
 		else
 		{
 			while (pf->width--)
-				pf->len += ft_len_putchar(' ');
+				pf->len += ft_len_putchar(' ', pf->fd);
 			put_spacing(pf, i);
 		}
 	}
@@ -87,13 +89,13 @@ static int			nb_start(t_printf *pf, long long i, char *str)
 		(pf->flag[3] == TRUE && pf->width <= 0) ||
 		(pf->flag[3] == TRUE && pf->precision == -1)))
 	{
-		pf->len += ft_len_putchar('-');
+		pf->len += ft_len_putchar('-', pf->fd);
 		ignore = 1;
 	}
 	front_padding_nb(pf, i, str);
 	if (i < 0 && pf->precision > 0 && !ignore)
 	{
-		pf->len += ft_len_putchar('-');
+		pf->len += ft_len_putchar('-', pf->fd);
 		ignore = 1;
 	}
 	return (ignore);
@@ -108,7 +110,7 @@ void				put_di(t_printf *pf)
 	i = get_number(pf);
 	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
 		(str = ft_strnew(0)) && pf->width != 0 && pf->flag[0] == FALSE)
-		pf->len += ft_len_putchar(' ');
+		pf->len += ft_len_putchar(' ', pf->fd);
 	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
@@ -117,10 +119,10 @@ void				put_di(t_printf *pf)
 	ignore = nb_start(pf, i, str);
 	if ((pf->precision -= (i < 0 ? ft_nbs(-i) : ft_nbs(i))) >= 0)
 		while (pf->precision--)
-			pf->len += ft_len_putchar('0');
-	pf->len += ft_len_putstr(str, ignore);
+			pf->len += ft_len_putchar('0', pf->fd);
+	pf->len += ft_len_putstr(str, ignore, pf->fd);
 	if (pf->width > 0 && pf->flag[0] == TRUE)
 		while (pf->width--)
-			pf->len += ft_len_putchar(' ');
+			pf->len += ft_len_putchar(' ', pf->fd);
 	free(str);
 }

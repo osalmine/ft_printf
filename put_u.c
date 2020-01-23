@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:44:42 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 10:38:35 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:46:30 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static size_t	get_number(t_printf *pf)
 		i = (unsigned long)va_arg(pf->lst, unsigned long int);
 	else if (pf->length[3] == TRUE)
 		i = (unsigned long long)va_arg(pf->lst, unsigned long long int);
+	else if (pf->length[5] == TRUE)
+		i = (size_t)va_arg(pf->lst, size_t);
 	else
 		i = (unsigned int)va_arg(pf->lst, int);
 	i = (size_t)i;
@@ -63,12 +65,12 @@ static void		front_padding_nb(t_printf *pf, long long i, char *str)
 		{
 			put_spacing(pf, i);
 			while (pf->width--)
-				pf->len += ft_len_putchar('0');
+				pf->len += ft_len_putchar('0', pf->fd);
 		}
 		else
 		{
 			while (pf->width--)
-				pf->len += ft_len_putchar(' ');
+				pf->len += ft_len_putchar(' ', pf->fd);
 			put_spacing(pf, i);
 		}
 	}
@@ -83,28 +85,28 @@ static int		nb_start(t_printf *pf, long long i, char *str)
 		put_spacing(pf, i);
 	if (i < 0 && ((pf->width <= 0 && pf->precision > 0) || pf->flag[3] == TRUE))
 	{
-		pf->len += ft_len_putchar('-');
+		pf->len += ft_len_putchar('-', pf->fd);
 		ignore = 1;
 	}
 	front_padding_nb(pf, i, str);
 	if (i < 0 && pf->precision > 0 && !ignore)
 	{
-		pf->len += ft_len_putchar('-');
+		pf->len += ft_len_putchar('-', pf->fd);
 		ignore = 1;
 	}
 	return (ignore);
 }
 
-void				put_u(t_printf *pf)
+void			put_u(t_printf *pf)
 {
 	size_t	i;
-	char		*str;
-	int			ignore;
+	char	*str;
+	int		ignore;
 
 	i = get_number(pf);
 	if ((pf->precision <= -2 || pf->precision == 0) && i == 0 &&
 		(str = ft_strnew(0)) && pf->width != 0)
-		pf->len += ft_len_putchar(' ');
+		pf->len += ft_len_putchar(' ', pf->fd);
 	else if ((pf->precision <= -2 || pf->precision == 0) && i == 0)
 		str = ft_strnew(0);
 	else
@@ -113,10 +115,10 @@ void				put_u(t_printf *pf)
 	ignore = nb_start(pf, i, str);
 	if ((pf->precision -= (i < 0 ? ft_nbs(-i) : ft_nbs(i))) >= 0)
 		while (pf->precision--)
-			pf->len += ft_len_putchar('0');
-	pf->len += ft_len_putstr(str, ignore);
+			pf->len += ft_len_putchar('0', pf->fd);
+	pf->len += ft_len_putstr(str, ignore, pf->fd);
 	if (pf->width > 0 && pf->flag[0] == TRUE)
 		while (pf->width--)
-			pf->len += ft_len_putchar(' ');
+			pf->len += ft_len_putchar(' ', pf->fd);
 	free(str);
 }

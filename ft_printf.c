@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 08:33:29 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 11:25:30 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:07:02 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void		print_types(t_printf *pf)
 {
@@ -35,6 +34,10 @@ void		print_types(t_printf *pf)
 		put_pros(pf);
 	if (pf->type == 0)
 		put_empty(pf);
+	if (pf->type == 'b')
+		put_b(pf);
+	if (pf->type == 'a')
+		put_a(pf);
 }
 
 t_printf	*init_pf(char *str, t_printf *pf)
@@ -72,7 +75,7 @@ void		pf_start(t_printf *pf, char *str)
 			str += pf->i;
 		}
 		else
-			pf->len += ft_len_putchar(*str);
+			pf->len += ft_len_putchar(*str, pf->fd);
 		str++;
 	}
 }
@@ -87,6 +90,28 @@ int			ft_printf(const char *format, ...)
 	len = 0;
 	if (!(pf = (t_printf*)malloc(sizeof(t_printf))))
 		return (0);
+	pf->len = 0;
+	pf->fd = 1;
+	va_start(pf->lst, format);
+	if (format)
+		pf_start(pf, str);
+	va_end(pf->lst);
+	len = pf->len;
+	free(pf);
+	return (len);
+}
+
+int			ft_fprintf(int fd, const char *format, ...)
+{
+	t_printf	*pf;
+	char		*str;
+	int			len;
+
+	str = (char *)format;
+	len = 0;
+	if (!(pf = (t_printf*)malloc(sizeof(t_printf))))
+		return (0);
+	pf->fd = fd;
 	pf->len = 0;
 	va_start(pf->lst, format);
 	if (format)

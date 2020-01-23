@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:57:53 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 10:43:53 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:07:31 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,6 @@ static char		ft_calculate_char(int mod, char c)
 			return_char = c;
 	}
 	return (return_char);
-}
-
-int				ft_nb_len(size_t nb, size_t base)
-{
-	int size;
-
-	size = 0;
-	if (nb == 0)
-		return (1);
-	while (nb)
-	{
-		nb /= base;
-		size++;
-	}
-	return (size);
-}
-
-int				ft_nb_len_ll(long long nb, long long base)
-{
-	int size;
-
-	size = 0;
-	if (nb == 0)
-		return (1);
-	while (nb)
-	{
-		nb /= base;
-		size++;
-	}
-	return (size);
 }
 
 char			*ft_itoa_base(size_t num, size_t base, char up_lo)
