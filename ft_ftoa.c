@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 08:58:09 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 13:49:53 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:38:53 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,20 @@ static void			ft_decimals(long double ld, int precision, char **s, int i)
 	}
 }
 
+static char			*end(int neg, char *str)
+{
+	char *tmp;
+
+	if (neg == 1)
+	{
+		tmp = ft_strdup(str);
+		free(str);
+		str = ft_strjoin("-", tmp);
+		free(tmp);
+	}
+	return (str);
+}
+
 char				*ft_ftoa(long double n, int precision)
 {
 	char		*str;
@@ -88,7 +102,5 @@ char				*ft_ftoa(long double n, int precision)
 	i = (int)ft_strlen(str);
 	if (precision > 0)
 		ft_decimals(ld, precision, &str, i);
-	if (neg == 1)
-		str = ft_strjoin("-", str);
-	return (str);
+	return (end(neg, str));
 }
