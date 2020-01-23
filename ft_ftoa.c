@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 08:58:09 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/23 11:34:49 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:38:38 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ static void			ft_decimals(long double ld, int precision, char **s, int i)
 //			printf("ld == 9\n");
 		if (precision == 0 && (int)ld != tmp)
 			tmp = (int)ld;
-//		if (pr >= 20 && precision == 0 && (long long)(ld * 10) % 10 >= 5)
-//			tmp++;
+		if (pr >= 20 && precision == 0 && (long long)(ld * 10) % 10 >= 5)
+			tmp++;
 		if ((int)tmp == 0)
 		{
 //			printf("Zero, precision is %d and tmp is %d\n", precision, (int)tmp);
