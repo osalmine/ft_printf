@@ -40,17 +40,21 @@ It works with the following flags:
 
 It has functionality for precision (e.g %.3s) and field-width (e.g %3s). Width and precision work with * also (e.g "%.*s", 3)
 
-**Flags:**
+My ft_printf works with the following length flags:
 
-| Flags | d, i        |    o, u, x, X      |
-| ----- | ----------- | ------------------ |
-| h     | short       | unsigned short     |
-| hh    | signed char | unsigned char      |
-| l     | long        | unsigned long      |
-| ll    | long long   | unsigned long long |
-| z     | size_t      | size_t             |
+| Flags | d, i        |    o, u, x, X      | f      |
+| ----- | ----------- | ------------------ | ------ |
+| h     | short       | unsigned short     |        |
+| hh    | signed char | unsigned char      |        |
+| l     | long        | unsigned long      | double |
+| ll    | long long   | unsigned long long |        |
+| z     | size_t      | size_t             |        |
+| L     |             |                    | long double |
 
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
+It works also with the following flags:
+
+**#** for o, x, X: value is preceeded with 0, 0x, 0X
+**-** : left-justify the field width
+**+** : forces to precede with + or -
+**0** : left-pads the field width with zeroes instead of spaces.
+**[space]** : If no sign is going to be written, insert blank before the number
