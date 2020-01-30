@@ -3,7 +3,7 @@ Hive - ft_printf
 
 > Because I’m tired of using putnbr and putstr
 
-Recoded the printf function. It creates a libftprintf.a library once compiled using:
+In this project I recoded the printf function. It creates a libftprintf.a library once compiled using:
 
 ```make```
 
