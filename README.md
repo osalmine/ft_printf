@@ -38,7 +38,7 @@ It works with the following flags:
 ```%a``` : prints a NULL-terminated 2d array (char**)
 
 
-It has functionality for precision (e.g %.3s) and field-width (e.g %3s). Width and precision work with * also (e.g "%.*s", 3)
+It has functionality for **precision** (e.g %.3s) and **field-width** (e.g %3s). Width and precision work with * also (e.g "%.*s", 3)
 
 My ft_printf works with the following length flags:
 
@@ -54,7 +54,23 @@ My ft_printf works with the following length flags:
 It works also with the following flags:
 
 **#** for o, x, X: value is preceeded with 0, 0x, 0X
+
 **-** : left-justify the field width
+
 **+** : forces to precede with + or -
+
 **0** : left-pads the field width with zeroes instead of spaces.
+
 **[space]** : If no sign is going to be written, insert blank before the number
+
+**Other bonuses**
+
+Colours: see ft_printf.h for full list of colours, but they can be used in the following way
+```ft_printf(RED BG_BLACK "This string is in red\n" RESET );```
+
+Change the file descriptor that ft_printf prints to and can be used as such (similar to fprintf):
+```ft_fprintf(fd, "This string goes to different fd!\n");```
+
+**Some issues:**
+%f flag doesn't work with some floats with high precision (over 20), but should work with almost every.
+The function isn't super fast compared to the original printf as I did it with a complicated struct and not in bitwise.
