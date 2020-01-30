@@ -42,7 +42,7 @@ It has functionality for precision (e.g %.3s) and field-width (e.g %3s). Width a
 
 Flags:
 |d, i | o, u, x, X
------|-----------
+----
 h | short | unsigned short
 hh | signed char | unsigned char
 l | long | unsigned long
