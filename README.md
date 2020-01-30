@@ -3,7 +3,11 @@ Hive - ft_printf
 
 > Because I’m tired of using putnbr and putstr
 
-Recoded the printf function. It works with the following flags:
+Recoded the printf function. It creates a libftprintf.a library once compiled using:
+
+```make```
+
+It works with the following flags:
 
 ```%c``` : prints an ascii character
 
@@ -25,8 +29,23 @@ Recoded the printf function. It works with the following flags:
 
 ```%f``` : prints floats
 
+```%%``` : prints %
+
 **Bonuses**
+
 ```%b``` : prints the number in binary (base 2)
 
 ```%a``` : prints a NULL-terminated 2d array (char**)
+
+
+It has functionality for precision (e.g %.3s) and field-width (e.g %3s). Width and precision work with * also (e.g "%.*s", 3)
+
+Flags:
+|d, i | o, u, x, X
+-----|-----------
+h | short | unsigned short
+hh | signed char | unsigned char
+l | long | unsigned long
+ll | long long | unsigned long long
+z | size_t | size_t
 
