@@ -41,11 +41,15 @@ It works with the following flags:
 It has functionality for precision (e.g %.3s) and field-width (e.g %3s). Width and precision work with * also (e.g "%.*s", 3)
 
 Flags:
-|d, i | o, u, x, X
-----
-h | short | unsigned short
-hh | signed char | unsigned char
-l | long | unsigned long
-ll | long long | unsigned long long
-z | size_t | size_t
+| | d, i | o, u, x, X |
+|-|------|------------|
+| h | short | unsigned short |
+| hh | signed char | unsigned char |
+| l | long | unsigned long |
+| ll | long long | unsigned long long |
+| z | size_t | size_t |
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
