@@ -31,6 +31,8 @@ It works with the following flags:
 
 ```%%``` : prints %
 
+See [subject](ft_printf.en.pdf) for more details.
+
 **Bonuses**
 
 ```%b``` : prints the number in binary (base 2)
