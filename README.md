@@ -69,6 +69,9 @@ It works also with the following flags:
 
 Colours: see ft_printf.h for full list of colours, but they can be used in the following way
 ```ft_printf(RED BG_BLACK "This string is in red\n" RESET );```
+You can also insert colours in the middle using ```%s```:
+```ft_printf("%sThis is red, %sThis is blue\n" RESET, RED, BLUE );```
+
 
 Change the file descriptor that ft_printf prints to and can be used as such (similar to fprintf):
 ```ft_fprintf(fd, "This string goes to different fd!\n");```
