@@ -3,6 +3,10 @@ Hive - ft_printf
 
 > Because I’m tired of using putnbr and putstr
 
+Grade:
+
+[![ft_printf score](https://badge42.herokuapp.com/api/project/osalmine/ft_printf)](https://github.com/JaeSeoKim/badge42)
+
 In this project I recoded the printf function. It creates a libftprintf.a library once compiled using:
 
 ```make```
