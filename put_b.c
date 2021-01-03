@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 12:08:43 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/24 10:55:31 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/01/03 12:23:39 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static int		nb_start(t_printf *pf, long long i, char *str, int neg)
 
 /*
 **	BONUS: Prints int as binary (base 2). Puts '-' in front of negative numbers,
-**	otherwise works the same as %o flag
+**	otherwise works the same as %o flag. With # appends 0b to string
 */
 
 void			put_b(t_printf *pf)

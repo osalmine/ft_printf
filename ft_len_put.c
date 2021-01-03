@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 11:28:55 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/24 11:32:17 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/01/03 12:21:30 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	put_spacing(t_printf *pf, long long i)
 			pf->len += ft_len_putstr("0x", 0, pf->fd);
 		if (pf->flag[4] == TRUE && pf->type == 'X' && i != 0)
 			pf->len += ft_len_putstr("0X", 0, pf->fd);
+		if (pf->flag[4] == TRUE && pf->type == 'b' && i != 0)
+			pf->len += ft_len_putstr("0b", 0, pf->fd);
 	}
 }
 
