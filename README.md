@@ -48,18 +48,18 @@ It has functionality for **precision** (e.g %.3s) and **field-width** (e.g %3s).
 
 My ft_printf works with the following length flags:
 
-| Flags | d, i        |    o, u, x, X      | f      |
-| ----- | ----------- | ------------------ | ------ |
-| h     | short       | unsigned short     |        |
-| hh    | signed char | unsigned char      |        |
-| l     | long        | unsigned long      | double |
-| ll    | long long   | unsigned long long |        |
-| z     | size_t      | size_t             |        |
-| L     |             |                    | long double |
+| Flags | d, i        |    o, u, x, X      | f      | a (bonus) |
+| ----- | ----------- | ------------------ | ------ | --------- |
+| h     | short       | unsigned short     |        |           |
+| hh    | signed char | unsigned char      |        | print strings on the same line  |
+| l     | long        | unsigned long      | double |   |
+| ll    | long long   | unsigned long long |        |   |
+| z     | size_t      | size_t             |        |   |
+| L     |             |                    | long double |   |
 
 It works also with the following flags:
 
-**#** for o, x, X: value is preceeded with 0, 0x, 0X
+**#** for o, x, X, b: value is preceeded with 0, 0x, 0X, 0b
 
 **-** : left-justify the field width
 
