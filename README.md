@@ -3,6 +3,10 @@ Hive - ft_printf
 
 > Because I’m tired of using putnbr and putstr
 
+Grade:
+
+[![ft_printf score](https://badge42.herokuapp.com/api/project/osalmine/ft_printf)](https://github.com/JaeSeoKim/badge42)
+
 In this project I recoded the printf function. It creates a libftprintf.a library once compiled using:
 
 ```make```
@@ -30,6 +34,8 @@ It works with the following flags:
 ```%f``` : prints floats
 
 ```%%``` : prints %
+
+See [subject](ft_printf.en.pdf) for more details.
 
 **Bonuses**
 
@@ -67,6 +73,9 @@ It works also with the following flags:
 
 Colours: see ft_printf.h for full list of colours, but they can be used in the following way
 ```ft_printf(RED BG_BLACK "This string is in red\n" RESET );```
+You can also insert colours in the middle using ```%s```:
+```ft_printf("%sThis is red, %sThis is blue\n" RESET, RED, BLUE );```
+
 
 Change the file descriptor that ft_printf prints to and can be used as such (similar to fprintf):
 ```ft_fprintf(fd, "This string goes to different fd!\n");```
