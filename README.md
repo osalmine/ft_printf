@@ -5,7 +5,7 @@ Hive - ft_printf
 
 Grade:
 
-[![osalmine's ft_printf Score](https://badge42.vercel.app/api/v2/cl2gijtz7003009mofz5pnp5t/project/1759869)](https://github.com/JaeSeoKim/badge42)
+[![osalmine's 42 push_swap Score: 112/100](https://badge42.coday.fr/api/v2/clysm3yyz5816201p4sqs880rw/project/1759869)](https://github.com/Coday-meric/badge42)
 
 In this project I recoded the printf function. It creates a libftprintf.a library once compiled using:
 
